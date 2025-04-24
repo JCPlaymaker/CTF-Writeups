@@ -33,7 +33,7 @@ a provoqué un comportement différent du serveur, menant au flag.
 
 ## Recherches effectuées
 
-### Documentation officielle : \ https://hexdocs.pm/elixir/String.html#to_existing_atom/1
+### Documentation officielle : <br> https://hexdocs.pm/elixir/String.html#to_existing_atom/1
 
 
 ### Résumé utile :
