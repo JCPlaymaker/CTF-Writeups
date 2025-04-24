@@ -35,11 +35,6 @@ a provoqué un comportement différent du serveur, menant au flag.
 
 ### Documentation officielle : \ https://hexdocs.pm/elixir/String.html#to_existing_atom/1
 
-* Article expliquant les dangers de la conversion arbitraire vers atom :
-
-"The perils of String.to_atom" (source)
-
-* Discussions sur les attaques de type atom injection dans Elixir ou Erlang
 
 ### Résumé utile :
 
