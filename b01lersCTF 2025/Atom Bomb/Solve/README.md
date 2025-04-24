@@ -23,8 +23,7 @@ Le serveur attendait un objet JSON avec une clé impact contenant les détails d
 ```
 ```elixir
 defmodule AtomBomb.PageController do
-...
-...
+# (...)
   def get_bomb_impacts(conn, params) do
     params = AtomBomb.atomizer(params)
     danger_message = AtomBomb.calculate_bomb_danger_level(params.impact.bomb)
