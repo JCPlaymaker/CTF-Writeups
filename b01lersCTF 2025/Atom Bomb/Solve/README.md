@@ -8,7 +8,7 @@ Contrairement aux services REST classiques, ce backend repose sur Elixir (et vra
 
 ## Analyse des artefacts et identification des indices
 
-Le serveur attendait un objet JSON avec une clé impact contenant les détails d’une bombe. Par exemple :
+Le serveur attendait un objet JSON avec une clé ``impact`` contenant les détails d’une bombe. Par exemple :
 ```json
 {
   "impact": {
@@ -21,6 +21,11 @@ Le serveur attendait un objet JSON avec une clé impact contenant les détails d
   }
 }
 ```
+
+Une tentative de fuzzing a révélé que certaines erreurs côté serveur faisaient référence à des atoms inconnus, ce qui a mis la puce à l’oreille : dans Elixir, la fonction ``String.to_existing_atom/1`` ne crée pas de nouvel atom mais échoue si l’atom n’existe pas déjà. Cela ouvre la voie à un crash contrôlé ou même à une exécution de code si d'autres modules sont appelés dynamiquement.
+
+Le code source du backend a confirmé cette intuition. Dans le contrôleur :
+
 ```elixir
 defmodule AtomBomb.PageController do
 # (...)
@@ -32,18 +37,48 @@ defmodule AtomBomb.PageController do
 end
 ```
 
-Une tentative de fuzzing a révélé que certaines erreurs côté serveur faisaient référence à des atoms inconnus, ce qui a mis la puce à l’oreille : dans Elixir, la fonction String.to_existing_atom/1 ne crée pas de nouvel atom mais échoue si l’atom n’existe pas déjà. Cela ouvre la voie à un crash contrôlé ou même à une exécution de code si d'autres modules sont appelés dynamiquement.
+La ligne vulnérable est :
+``params = AtomBomb.atomizer(params)``
 
-L’analyse du code source du backend (ou via messages d’erreur détaillés) a permis d’identifier la fonction vulnérable suivante :
+Elle appelle la fonction ``atomizer/1`` définie dans le module AtomBomb, dont voici le passage critique :
+
+```elixir
+def atomizer(params) when is_binary(params) do
+  if String.at(params, 0) == ":" do
+    atom_string = String.slice(params, 1..-1//1)
+    case string_to_atom(atom_string) do
+      {:ok, val} -> val
+      :error -> nil
+    end
+  else
+    params
+  end
+end
 ```
 
-Un test avec un payload du type :
+Cette fonction convertit toute chaîne commençant par ``:`` en un atom Elixir existant. Si ce champ correspond à un nom de module valide (par exemple ``":Elixir.AtomBomb"``), il devient littéralement l’atom ``Elixir.AtomBomb``.
+<br>
+Ensuite, dans une autre partie du code, si ce champ est utilisé dans un ``apply/3`` (par exemple ``apply(mod, :bomb, [])``), cela permet d'exécuter n’importe quelle fonction ``bomb/0`` d’un module existant. Le module ``AtomBomb`` inclut justement une telle fonction :
+
+```elixir
+def bomb() do
+  flag = case File.read("flag.txt") do
+    {:ok, flag} -> flag
+    {:error, _} -> "bctf{REDACTED}"
+  end
+  "The atom bomb detonated, and left in the crater there is a chunk of metal inscribed with #{flag}"
+end
+```
+Et donc on obtiendrait:
+`` danger_message = AtomBomb.calculate_bomb_danger_level(Elixir.AtomBomb.bomb)``
+
+Ensuite, un test avec un payload du type :
 ```json
 {
   "impact": ":Elixir.AtomBomb"
 }
 ```
-a provoqué un comportement différent du serveur, menant au flag.
+nous donne le flag.
 
 ## Recherches effectuées
 
