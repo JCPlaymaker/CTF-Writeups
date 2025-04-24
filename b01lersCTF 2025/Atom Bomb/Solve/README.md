@@ -4,7 +4,7 @@
 
 Le challenge "AtomBomb" est une épreuve de type web/service où l’on interagit avec un serveur écrit en Elixir. Le point de départ était un service HTTP qui acceptait un JSON en POST sur une route /bomb_impacts, censé contenir des informations sur une bombe (altitude, type d’explosion, puissance, etc.). Le but était de déclencher une exécution inattendue ou une erreur du serveur afin de récupérer un flag.
 
-Contrairement aux services REST classiques, ce backend repose sur Elixir (et vraisemblablement Phoenix), un framework fonctionnel sur la VM Erlang. Le nom de l’épreuve et certains comportements du serveur suggéraient une vulnérabilité liée aux atoms, une structure de données particulière à Elixir.
+Contrairement aux services REST classiques, ce backend repose sur Elixir (et Phoenix), un framework fonctionnel. Le nom de l’épreuve et certains comportements du serveur suggéraient une vulnérabilité liée aux atoms, une structure de données particulière à Elixir.
 
 ## Analyse des artefacts et identification des indices
 
@@ -69,6 +69,7 @@ def bomb() do
   "The atom bomb detonated, and left in the crater there is a chunk of metal inscribed with #{flag}"
 end
 ```
+
 Et donc on obtiendrait:
 `` danger_message = AtomBomb.calculate_bomb_danger_level(Elixir.AtomBomb.bomb)``
 
