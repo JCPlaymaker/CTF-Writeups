@@ -2,13 +2,13 @@
 
 ## Description de l’épreuve
 
-Le challenge "AtomBomb" est une épreuve de type web/service où l’on interagit avec un serveur écrit en Elixir. Le point de départ était un service HTTP qui acceptait un JSON en POST sur une route /bomb_impacts, censé contenir des informations sur une bombe (altitude, type d’explosion, puissance, etc.). Le but était de déclencher une exécution inattendue ou une erreur du serveur afin de récupérer un flag.
+Le challenge "AtomBomb" est une épreuve de type web/service où l’on interagit avec un serveur écrit en Elixir. Le point de départ pour l'exploit était un service HTTP qui acceptait un JSON en POST sur une route ``/bomb_impacts``, censé contenir des informations sur une bombe (altitude, type d’explosion, puissance, etc.). Le but était de déclencher une exécution inattendue ou une erreur du serveur afin de récupérer un flag.
 
 Contrairement aux services REST classiques, ce backend repose sur Elixir (et Phoenix), un framework fonctionnel. Le nom de l’épreuve et certains comportements du serveur suggéraient une vulnérabilité liée aux atoms, une structure de données particulière à Elixir.
 
 ## Analyse des artefacts et identification des indices
 
-Le serveur attendait un objet JSON avec une clé ``impact`` contenant les détails d’une bombe. Par exemple :
+Le serveur s'attendait à recevoir un objet JSON avec une clé ``impact`` contenant les détails d’une bombe. Par exemple :
 ```json
 {
   "impact": {
@@ -22,9 +22,9 @@ Le serveur attendait un objet JSON avec une clé ``impact`` contenant les détai
 }
 ```
 
-Une tentative de fuzzing a révélé que certaines erreurs côté serveur faisaient référence à des atoms inconnus, ce qui a mis la puce à l’oreille : dans Elixir, la fonction ``String.to_existing_atom/1`` ne crée pas de nouvel atom mais échoue si l’atom n’existe pas déjà. Cela ouvre la voie à un crash contrôlé ou même à une exécution de code si d'autres modules sont appelés dynamiquement.
+Une tentative de fuzzing a révélé que certaines erreurs côté serveur faisaient référence à des atoms inconnus, ce qui nous a amené à se concentrer sur le ``:`` dans Elixir, la fonction ``String.to_existing_atom/1`` ne crée pas de nouvel atom mais échoue si l’atom n’existe pas déjà. Cela ouvre la voie à un crash contrôlé ou même à une exécution de code si d'autres modules sont appelés dynamiquement.
 
-Le code source du backend a confirmé cette intuition. Dans le contrôleur :
+Le code source du backend a confirmé cette intuition. Dans le controller :
 
 ```elixir
 defmodule AtomBomb.PageController do
@@ -70,21 +70,20 @@ def bomb() do
 end
 ```
 
-Et donc on obtiendrait:
-`` danger_message = AtomBomb.calculate_bomb_danger_level(Elixir.AtomBomb.bomb)``
-
-Ensuite, un test avec un payload du type :
+Alors, un test avec un payload du type :
 ```json
 {
   "impact": ":Elixir.AtomBomb"
 }
 ```
-nous donne le flag.
+Et donc on obtiendrait:
+`` danger_message = AtomBomb.calculate_bomb_danger_level(Elixir.AtomBomb.bomb)``
+
+ce qui nous donne le flag.
 
 ## Recherches effectuées
 
 ### Documentation officielle : <br> https://hexdocs.pm/elixir/String.html#to_existing_atom/1
-
 
 ### Résumé utile :
 
@@ -114,7 +113,7 @@ nous donne le flag.
 
 ``bctf{n0w_w3_ar3_a1l_d3ad_:(_8cd12c17102ac269}``
 
-Ce flag souligne le cœur du problème : l’usage non-sécurisé de la fonction ``String.to_atom`` ou ``String.to_existing_atom``.
+Ce flag souligne bien mon état après l'avoir eu lol.
 
 ## Code des exploits et payloads
 
