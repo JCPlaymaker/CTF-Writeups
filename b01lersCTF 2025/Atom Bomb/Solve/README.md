@@ -61,9 +61,9 @@ a provoqué un comportement différent du serveur, menant au flag.
 
 ## CWE associées
 
-### * CWE-138: Improper Neutralization of Special Elements — Usage dangereux de fonctions de conversion type eval, to_atom, etc.
+###  CWE-138: Improper Neutralization of Special Elements — Usage dangereux de fonctions de conversion type eval, to_atom, etc.
 
-### * CWE-502: Deserialization of Untrusted Data — Même si ce n'est pas de la désérialisation au sens strict, il s’agit d’un traitement non-sécurisé de données entrantes.
+###  CWE-502: Deserialization of Untrusted Data — Même si ce n'est pas de la désérialisation au sens strict, il s’agit d’un traitement non-sécurisé de données entrantes.
 
 ## Flag obtenu
 
