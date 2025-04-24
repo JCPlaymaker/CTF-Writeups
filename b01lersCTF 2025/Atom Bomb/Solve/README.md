@@ -9,7 +9,7 @@ Contrairement aux services REST classiques, ce backend repose sur Elixir (et vra
 ## Analyse des artefacts et identification des indices
 
 Le serveur attendait un objet JSON avec une clé impact contenant les détails d’une bombe. Par exemple :
-```
+```json
 {
   "impact": {
     "bomb": {
@@ -24,7 +24,7 @@ Le serveur attendait un objet JSON avec une clé impact contenant les détails d
 Une tentative de fuzzing a révélé que certaines erreurs côté serveur faisaient référence à des atoms inconnus, ce qui a mis la puce à l’oreille : dans Elixir, la fonction String.to_existing_atom/1 ne crée pas de nouvel atom mais échoue si l’atom n’existe pas déjà. Cela ouvre la voie à un crash contrôlé ou même à une exécution de code si d'autres modules sont appelés dynamiquement.
 
 Un test avec un payload du type :
-```
+```json
 {
   "impact": ":Elixir.AtomBomb"
 }
