@@ -92,7 +92,7 @@ nous donne le flag.
 
 * Les atoms ne sont pas garbage-collected et peuvent faire planter l'application si on en crée trop (atom leak).
 
-* Certaines fonctions essaient de convertir dynamiquement des chaînes en atoms pour appeler des modules/fonctions — c’est là qu’on peut injecter quelque chose de spécial.
+* Certaines fonctions essaient de convertir dynamiquement des chaînes en atoms pour appeler des modules/fonctions, c’est là qu’on peut injecter quelque chose de spécial.
 
 ## Tentatives et actions mises en œuvre
 
