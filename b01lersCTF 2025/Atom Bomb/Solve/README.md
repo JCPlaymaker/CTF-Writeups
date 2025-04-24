@@ -111,7 +111,7 @@ nous donne le flag.
 
 ## Flag obtenu
 
-### ``bctf{n0w_w3_ar3_a1l_d3ad_:(_8cd12c17102ac269}``
+``bctf{n0w_w3_ar3_a1l_d3ad_:(_8cd12c17102ac269}``
 
 Ce flag souligne le cœur du problème : l’usage non-sécurisé de la fonction ``String.to_atom`` ou ``String.to_existing_atom``.
 
