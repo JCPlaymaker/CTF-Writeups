@@ -33,21 +33,21 @@ a provoqué un comportement différent du serveur, menant au flag.
 
 ## Recherches effectuées
 
-### - Documentation officielle : \ https://hexdocs.pm/elixir/String.html#to_existing_atom/1
+### * Documentation officielle : \ https://hexdocs.pm/elixir/String.html#to_existing_atom/1
 
-- Article expliquant les dangers de la conversion arbitraire vers atom :
+* Article expliquant les dangers de la conversion arbitraire vers atom :
 
 "The perils of String.to_atom" (source)
 
-- Discussions sur les attaques de type atom injection dans Elixir ou Erlang
+* Discussions sur les attaques de type atom injection dans Elixir ou Erlang
 
 ### Résumé utile :
 
-- ``String.to_existing_atom("foo")`` échoue si ``:foo`` n'existe pas.
+* ``String.to_existing_atom("foo")`` échoue si ``:foo`` n'existe pas.
 
-- Les atoms ne sont pas garbage-collected et peuvent faire planter l'application si on en crée trop (atom leak).
+* Les atoms ne sont pas garbage-collected et peuvent faire planter l'application si on en crée trop (atom leak).
 
-- Certaines fonctions essaient de convertir dynamiquement des chaînes en atoms pour appeler des modules/fonctions — c’est là qu’on peut injecter quelque chose de spécial.
+* Certaines fonctions essaient de convertir dynamiquement des chaînes en atoms pour appeler des modules/fonctions — c’est là qu’on peut injecter quelque chose de spécial.
 
 ## Tentatives et actions mises en œuvre
 
@@ -61,9 +61,9 @@ a provoqué un comportement différent du serveur, menant au flag.
 
 ## CWE associées
 
-### - CWE-138: Improper Neutralization of Special Elements — Usage dangereux de fonctions de conversion type eval, to_atom, etc.
+### * CWE-138: Improper Neutralization of Special Elements — Usage dangereux de fonctions de conversion type eval, to_atom, etc.
 
-### - CWE-502: Deserialization of Untrusted Data — Même si ce n'est pas de la désérialisation au sens strict, il s’agit d’un traitement non-sécurisé de données entrantes.
+### * CWE-502: Deserialization of Untrusted Data — Même si ce n'est pas de la désérialisation au sens strict, il s’agit d’un traitement non-sécurisé de données entrantes.
 
 ## Flag obtenu
 
