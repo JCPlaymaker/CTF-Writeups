@@ -21,7 +21,22 @@ Le serveur attendait un objet JSON avec une clé impact contenant les détails d
   }
 }
 ```
+```elixir
+defmodule AtomBomb.PageController do
+...
+...
+  def get_bomb_impacts(conn, params) do
+    params = AtomBomb.atomizer(params)
+    danger_message = AtomBomb.calculate_bomb_danger_level(params.impact.bomb)
+    render(conn, :danger_level, danger_message: danger_message)
+  end
+end
+```
+
 Une tentative de fuzzing a révélé que certaines erreurs côté serveur faisaient référence à des atoms inconnus, ce qui a mis la puce à l’oreille : dans Elixir, la fonction String.to_existing_atom/1 ne crée pas de nouvel atom mais échoue si l’atom n’existe pas déjà. Cela ouvre la voie à un crash contrôlé ou même à une exécution de code si d'autres modules sont appelés dynamiquement.
+
+L’analyse du code source du backend (ou via messages d’erreur détaillés) a permis d’identifier la fonction vulnérable suivante :
+```
 
 Un test avec un payload du type :
 ```json
