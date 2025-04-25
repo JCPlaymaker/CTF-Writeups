@@ -2,11 +2,11 @@
 
 ## Analyse des artefacts et identification des indices
 
-L’analyse du projet révèle une ``Single Page Application (SPA)`` réalisée avec React et Vite. En inspectant la structure des fichiers, on identifie un composant Flag.tsx qui contient directement le flag dans son JSX, bien qu’il ne soit pas affiché par défaut dans l’interface.
+L’analyse du code source révèle une ``Single Page Application (SPA)`` réalisée avec React et Vite. En inspectant la structure des fichiers, on identifie un composant ``Flag.tsx`` qui contient directement le flag dans son JSX, bien qu’il ne soit pas affiché par défaut dans l’interface.
 
 Le comportement de routage est géré côté client, sans rechargement de page, via l’API ``history.pushState``. Cela signifie que certaines routes peuvent être accessibles uniquement par manipulation manuelle de l’historique.
 
-Indice principal : un composant React Flag.tsx affiche directement :
+Indice principal : un composant React ``Flag.tsx`` affiche directement :
 ``{'bctf{fake_flag}'}``
 qui serait l'emplacement du vrai flag distant.
 
@@ -52,7 +52,7 @@ Ces CWE s’appliquent car le flag est exposé en dur dans le frontend, sans mé
 
 ## Proposition de correction
 
-Vu que les SAP opèrent principalement Client-Side et donc jsute côté Front-End, il est quasiment impossible de bien protéger des données sensibles si quelqu'un a accès au code source de l'application. L'implémentation d'une authentification par le back-end pourrait être viable mais cela va contre l'objectif d'avoir un SAP, donc parmis les propositions on peut dire:
+Vu que les SAP opèrent principalement Client-Side et juste côté Front-End de facon dynamique, il est quasiment impossible de bien protéger des données sensibles si quelqu'un a accès au code source de l'application. L'implémentation d'une authentification par le back-end pourrait être viable mais cela va contre l'objectif d'avoir un SAP qui veut charger le contenu dynamiquement sans avoir à faire appel à un back-end ce qui le rend plus rapide; donc parmis les propositions on peut dire que pour prévénir:
 
 * Ne jamais inclure de données sensibles dans le frontend.
 * Éviter d’utiliser des routes accessibles sans protection dans des SPAs pour des contenus sensibles.
@@ -62,5 +62,8 @@ Vu que les SAP opèrent principalement Client-Side et donc jsute côté Front-En
 * Servir le flag depuis un backend avec authentification, via une API sécurisée (par exemple GET /api/flag qui vérifie une session ou un token). 
 
 * Restreindre l’accès au composant Flag selon des conditions d’autorisation explicites côté backend.
+
+## Bonus
+On pouvait aussi essayer de reverse/deobfusquer le code source dans le fichier ``index-<hash>.js`` et avoir le flag mais ce n'était pas le but du challenge.
 
 
