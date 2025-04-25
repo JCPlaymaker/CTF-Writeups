@@ -1,5 +1,9 @@
 # TroubleAtTheSpa
 
+## Description de l’épreuve
+
+Le challenge "TroubleAtTheSpa" est une épreuve de web orientée autour d’une Single Page Application (SPA) développée avec React et empaquetée via Vite. Le site simule une belle page de présentation d'un site de blockchain, mais le véritable objectif est de trouver un flag caché quelque part dans l’application. Aucune route ou lien visible ne semble y mener directement, et le flag n’apparaît pas sur l’interface utilisateur. L’approche classique de recherche dans le DOM ou d’analyse de requêtes réseau n’aboutit pas. L’intuition doit donc porter sur la structure interne d’une SPA et la possibilité d’une navigation non conventionnelle.
+
 ## Analyse des artefacts et identification des indices
 
 L’analyse du code source révèle une ``Single Page Application (SPA)`` réalisée avec React et Vite. En inspectant la structure des fichiers, on identifie un composant ``Flag.tsx`` qui contient directement le flag dans son JSX, bien qu’il ne soit pas affiché par défaut dans l’interface.
