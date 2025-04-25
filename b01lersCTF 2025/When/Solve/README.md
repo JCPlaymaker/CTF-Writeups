@@ -3,7 +3,7 @@
 ## Description de l’épreuve
 
 Le challenge "When" est une épreuve de type web/reversing.
-Le service cible était accessible à l’URL https://when.atreides.b01lersc.tf/gamble et attendait une requête HTTP avec un en-tête Date. <br>
+Le service cible était accessible à l’URL https://when.atreides.b01lersc.tf/gamble et attendait une requête HTTP avec un en-tête Date.
 L’objectif était d’envoyer une requête à un moment très spécifique — ou simulé comme tel — pour déclencher une réponse contenant le flag.
 
 Aucune documentation n’était fournie. Le comportement du serveur restait inchangé pour la majorité des requêtes, renvoyant des messages neutres. Le but était de déterminer quand (d’où le nom du challenge) envoyer la requête.
