@@ -22,7 +22,7 @@ Indice principal : un composant React ``Flag.tsx`` affiche directement :
 ``{'bctf{fake_flag}'}``
 qui serait l'emplacement du vrai flag distant.
 
-Mais il faut simuler la navigation vers /flag pour le voir s’afficher dans l’interface.
+Mais il faut simuler la navigation vers ``/flag`` pour le voir s’afficher dans l’interface.
 
 ## Recherches bibliographiques et documentaires
 
@@ -64,7 +64,7 @@ Ces CWE s’appliquent car le flag est exposé en dur dans le frontend, sans mé
 
 ## Proposition de correction
 
-Vu que les SAP opèrent principalement Client-Side et juste côté Front-End de facon dynamique, il est quasiment impossible de bien protéger des données sensibles si quelqu'un a accès au code source de l'application. L'implémentation d'une authentification par le back-end pourrait être viable mais cela va contre l'objectif d'avoir un SAP qui veut charger le contenu dynamiquement sans avoir à faire appel à un back-end ce qui le rend plus rapide; donc parmis les propositions on peut dire que pour prévénir:
+Vu que les SAP opèrent principalement Client-Side et juste côté Front-End de facon dynamique, il est presque impossible de bien protéger des données sensibles si quelqu'un a accès au code source de l'application. L'implémentation d'une authentification par le back-end pourrait être la solution mais cela va contre l'objectif d'un SAP qui est de charger le contenu dynamiquement sans avoir à faire appel à un back-end, ce qui le rend plus rapide; donc parmis les propositions on peut dire que pour prévénir:
 
 * Ne jamais inclure de données sensibles dans le frontend.
 * Éviter d’utiliser des routes accessibles sans protection dans des SPAs pour des contenus sensibles.
