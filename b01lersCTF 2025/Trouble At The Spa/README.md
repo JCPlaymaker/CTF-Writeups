@@ -3,6 +3,17 @@
 ## Analyse des artefacts et identification des indices
 
 L’analyse du code source révèle une ``Single Page Application (SPA)`` réalisée avec React et Vite. En inspectant la structure des fichiers, on identifie un composant ``Flag.tsx`` qui contient directement le flag dans son JSX, bien qu’il ne soit pas affiché par défaut dans l’interface.
+```
+src (liste de pages pouvant être affichés par le site)
+├── AdCard.tsx
+├── App.tsx
+├── Flag.tsx
+├── Footer.tsx
+├── Header.tsx
+├── index.css
+├── main.tsx
+└── vite-env.d.ts
+```
 
 Le comportement de routage est géré côté client, sans rechargement de page, via l’API ``history.pushState``. Cela signifie que certaines routes peuvent être accessibles uniquement par manipulation manuelle de l’historique.
 
