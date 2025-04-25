@@ -46,7 +46,9 @@ Mais il faut simuler la navigation vers ``/flag`` pour le voir s’afficher dans
 
 2. Recherche dans les sources du bundle avec des mots-clés (bctf, flag) → présence de Flag.tsx.
 
-3. Test manuel en console :
+3. Essayer d'aller directement vers /flag → résulte dans une erreur 404 affichée par Github Pages.
+
+4. Test manuel en console :
 
 ```javascript
 window.history.pushState({}, "", "/flag");
