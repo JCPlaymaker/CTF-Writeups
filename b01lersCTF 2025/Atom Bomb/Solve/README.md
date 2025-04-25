@@ -130,12 +130,12 @@ curl -X POST https://atom-bomb.atreides.b01lersc.tf/bomb_impacts \
 
 Ce simple payload suffit à déclencher la réponse contenant le flag si le backend tente de convertir ce champ en atom et l’évalue ensuite.
 
-## Améliorations recommandées
+## Propositions de correction
 
-* Éviter la conversion dynamique de chaînes en atoms avec String.to_atom/1 ou to_existing_atom/1, sauf si les entrées sont rigoureusement contrôlées.
+* Supprimer toute conversion dynamique non contrôlée de chaînes en atoms.
 
-* Utiliser des correspondances explicites (case ou Map) pour valider les valeurs reçues et les transformer en atoms si nécessaire.
+* Remplacer apply/3 par des appels directs à des fonctions explicites et sûres.
 
-* Ne jamais utiliser apply/3 sur des modules définis par l'utilisateur ou construits dynamiquement à partir d'entrée non fiable.
+* Isoler et filtrer les paramètres utilisateur dès l’entrée (pattern matching strict).
 
-* Séparer le parsing de l’entrée utilisateur de la logique métier sensible (comme l’appel à une fonction de lecture de fichier contenant un flag).
+* Si des atoms doivent être générés, valider contre une liste blanche ou utiliser une table de correspondance sécurisée.
