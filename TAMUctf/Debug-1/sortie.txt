@@ -1,7 +1,0 @@
-Que tentez-vous de pécher le premier mois?
-Erreur: kaa.ombre.lac.PecheException: Il n'y a pas de ça dans le lac de l'ombre
-Et le second mois?
-Erreur: kaa.ombre.lac.PecheException: Il n'y a pas de ça dans le lac de l'ombre
-Et enfin le troisième mois?
-Erreur: kaa.ombre.lac.PecheException: Il n'y a pas de ça dans le lac de l'ombre
-Erreur: kaa.ombre.lac.PecheException: Ils se barrent en mission pendent 3 mois, et ils reviennent avec rien...
