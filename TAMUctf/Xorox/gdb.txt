@@ -1,0 +1,165 @@
+Already logging to gdb.txt.
+Dump of assembler code from 0x5555555550c0 to 0x555555555343:
+   0x00005555555550c0:	endbr64
+   0x00005555555550c4:	xor    ebp,ebp
+   0x00005555555550c6:	mov    r9,rdx
+   0x00005555555550c9:	pop    rsi
+   0x00005555555550ca:	mov    rdx,rsp
+   0x00005555555550cd:	and    rsp,0xfffffffffffffff0
+   0x00005555555550d1:	push   rax
+   0x00005555555550d2:	push   rsp
+   0x00005555555550d3:	xor    r8d,r8d
+   0x00005555555550d6:	xor    ecx,ecx
+   0x00005555555550d8:	lea    rdi,[rip+0x16b]        # 0x55555555524a
+   0x00005555555550df:	call   QWORD PTR [rip+0x2ef3]        # 0x555555557fd8
+   0x00005555555550e5:	hlt
+   0x00005555555550e6:	cs nop WORD PTR [rax+rax*1+0x0]
+   0x00005555555550f0:	lea    rdi,[rip+0x2f49]        # 0x555555558040
+   0x00005555555550f7:	lea    rax,[rip+0x2f42]        # 0x555555558040
+   0x00005555555550fe:	cmp    rax,rdi
+   0x0000555555555101:	je     0x555555555118
+   0x0000555555555103:	mov    rax,QWORD PTR [rip+0x2ed6]        # 0x555555557fe0
+   0x000055555555510a:	test   rax,rax
+   0x000055555555510d:	je     0x555555555118
+   0x000055555555510f:	jmp    rax
+   0x0000555555555111:	nop    DWORD PTR [rax+0x0]
+   0x0000555555555118:	ret
+   0x0000555555555119:	nop    DWORD PTR [rax+0x0]
+   0x0000555555555120:	lea    rdi,[rip+0x2f19]        # 0x555555558040
+   0x0000555555555127:	lea    rsi,[rip+0x2f12]        # 0x555555558040
+   0x000055555555512e:	sub    rsi,rdi
+   0x0000555555555131:	mov    rax,rsi
+   0x0000555555555134:	shr    rsi,0x3f
+   0x0000555555555138:	sar    rax,0x3
+   0x000055555555513c:	add    rsi,rax
+   0x000055555555513f:	sar    rsi,1
+   0x0000555555555142:	je     0x555555555158
+   0x0000555555555144:	mov    rax,QWORD PTR [rip+0x2ea5]        # 0x555555557ff0
+   0x000055555555514b:	test   rax,rax
+   0x000055555555514e:	je     0x555555555158
+   0x0000555555555150:	jmp    rax
+   0x0000555555555152:	nop    WORD PTR [rax+rax*1+0x0]
+   0x0000555555555158:	ret
+   0x0000555555555159:	nop    DWORD PTR [rax+0x0]
+   0x0000555555555160:	endbr64
+   0x0000555555555164:	cmp    BYTE PTR [rip+0x2ed5],0x0        # 0x555555558040
+   0x000055555555516b:	jne    0x555555555198
+   0x000055555555516d:	push   rbp
+   0x000055555555516e:	cmp    QWORD PTR [rip+0x2e82],0x0        # 0x555555557ff8
+   0x0000555555555176:	mov    rbp,rsp
+   0x0000555555555179:	je     0x555555555187
+   0x000055555555517b:	mov    rdi,QWORD PTR [rip+0x2e86]        # 0x555555558008
+   0x0000555555555182:	call   0x555555555070 <__cxa_finalize@plt>
+   0x0000555555555187:	call   0x5555555550f0
+   0x000055555555518c:	mov    BYTE PTR [rip+0x2ead],0x1        # 0x555555558040
+   0x0000555555555193:	pop    rbp
+   0x0000555555555194:	ret
+   0x0000555555555195:	nop    DWORD PTR [rax]
+   0x0000555555555198:	ret
+   0x0000555555555199:	nop    DWORD PTR [rax+0x0]
+   0x00005555555551a0:	endbr64
+   0x00005555555551a4:	jmp    0x555555555120
+   0x00005555555551a9:	endbr64
+   0x00005555555551ad:	push   rbp
+   0x00005555555551ae:	mov    rbp,rsp
+   0x00005555555551b1:	push   rbx
+   0x00005555555551b2:	sub    rsp,0x58
+   0x00005555555551b6:	mov    QWORD PTR [rsp+0x8],rdi
+   0x00005555555551bb:	mov    QWORD PTR [rsp],rsi
+   0x00005555555551bf:	mov    rax,QWORD PTR fs:0x28
+   0x00005555555551c8:	mov    QWORD PTR [rsp+0x48],rax
+   0x00005555555551cd:	xor    eax,eax
+   0x00005555555551cf:	vmovdqa ymm0,YMMWORD PTR [rip+0xe89]        # 0x555555556060
+   0x00005555555551d7:	vmovdqu YMMWORD PTR [rsp+0x20],ymm0
+   0x00005555555551dd:	mov    DWORD PTR [rsp+0x1c],0x0
+   0x00005555555551e5:	mov    rcx,QWORD PTR [rsp+0x8]
+   0x00005555555551ea:	mov    rsi,QWORD PTR [rsp]
+   0x00005555555551ee:	lea    rdi,[rsp+0x20]
+   0x00005555555551f3:	xor    rax,rax
+   0x00005555555551f6:	mov    rcx,rcx
+   0x00005555555551f9:	mov    rdx,rsi
+   0x00005555555551fc:	mov    rbx,rdi
+   0x00005555555551ff:	vmovdqu ymm0,YMMWORD PTR [rdx]
+   0x0000555555555203:	vmovdqu ymm1,YMMWORD PTR [rcx]
+   0x0000555555555207:	vmovdqu ymm2,YMMWORD PTR [rbx]
+   0x000055555555520b:	vpxor  ymm0,ymm0,ymm1
+   0x000055555555520f:	vpxor  ymm1,ymm1,ymm2
+   0x0000555555555213:	vpxor  ymm1,ymm1,ymm7
+   0x0000555555555217:	vpaddd ymm2,ymm0,ymm1
+   0x000055555555521b:	vpsubd ymm2,ymm2,ymm0
+   0x000055555555521f:	vptest ymm2,ymm2
+   0x0000555555555224:	sete   al
+   0x0000555555555227:	mov    DWORD PTR [rsp+0x1c],eax
+   0x000055555555522b:	mov    eax,DWORD PTR [rsp+0x1c]
+   0x000055555555522f:	mov    rdx,QWORD PTR [rsp+0x48]
+   0x0000555555555234:	sub    rdx,QWORD PTR fs:0x28
+   0x000055555555523d:	je     0x555555555244
+   0x000055555555523f:	call   0x5555555550a0 <__stack_chk_fail@plt>
+   0x0000555555555244:	mov    rbx,QWORD PTR [rbp-0x8]
+   0x0000555555555248:	leave
+   0x0000555555555249:	ret
+   0x000055555555524a:	endbr64
+   0x000055555555524e:	push   rbp
+   0x000055555555524f:	mov    rbp,rsp
+   0x0000555555555252:	sub    rsp,0x40
+   0x0000555555555256:	mov    DWORD PTR [rsp+0xc],edi
+   0x000055555555525a:	mov    QWORD PTR [rsp],rsi
+   0x000055555555525e:	mov    rax,QWORD PTR fs:0x28
+   0x0000555555555267:	mov    QWORD PTR [rsp+0x38],rax
+   0x000055555555526c:	xor    eax,eax
+   0x000055555555526e:	cmp    DWORD PTR [rsp+0xc],0x2
+   0x0000555555555273:	je     0x55555555529d
+   0x0000555555555275:	mov    rax,QWORD PTR [rsp]
+   0x0000555555555279:	mov    rax,QWORD PTR [rax]
+   0x000055555555527c:	mov    rsi,rax
+   0x000055555555527f:	lea    rax,[rip+0xd9a]        # 0x555555556020
+   0x0000555555555286:	mov    rdi,rax
+   0x0000555555555289:	mov    eax,0x0
+   0x000055555555528e:	call   0x5555555550b0 <printf@plt>
+   0x0000555555555293:	mov    eax,0x1
+   0x0000555555555298:	jmp    0x55555555532c
+   0x000055555555529d:	mov    rax,QWORD PTR [rsp]
+   0x00005555555552a1:	add    rax,0x8
+   0x00005555555552a5:	mov    rax,QWORD PTR [rax]
+   0x00005555555552a8:	mov    edx,0x5
+   0x00005555555552ad:	lea    rcx,[rip+0xd7e]        # 0x555555556032
+   0x00005555555552b4:	mov    rsi,rcx
+   0x00005555555552b7:	mov    rdi,rax
+   0x00005555555552ba:	call   0x555555555080 <strncmp@plt>
+   0x00005555555552bf:	test   eax,eax
+   0x00005555555552c1:	jne    0x555555555301
+   0x00005555555552c3:	lea    rax,[rip+0x2d56]        # 0x555555558020
+   0x00005555555552ca:	vmovdqu ymm7,YMMWORD PTR [rax]
+   0x00005555555552ce:	vmovdqa ymm0,YMMWORD PTR [rip+0xdaa]        # 0x555555556080
+   0x00005555555552d6:	vmovdqu YMMWORD PTR [rsp+0x10],ymm0
+   0x00005555555552dc:	mov    rax,QWORD PTR [rsp]
+   0x00005555555552e0:	add    rax,0x8
+   0x00005555555552e4:	mov    rax,QWORD PTR [rax]
+   0x00005555555552e7:	lea    rdx,[rax+0x5]
+   0x00005555555552eb:	lea    rax,[rsp+0x10]
+   0x00005555555552f0:	mov    rsi,rax
+   0x00005555555552f3:	mov    rdi,rdx
+   0x00005555555552f6:	call   0x5555555551a9
+   0x00005555555552fb:	test   eax,eax
+   0x00005555555552fd:	jne    0x555555555318
+   0x00005555555552ff:	jmp    0x555555555302
+   0x0000555555555301:	nop
+   0x0000555555555302:	lea    rax,[rip+0xd2f]        # 0x555555556038
+   0x0000555555555309:	mov    rdi,rax
+   0x000055555555530c:	call   0x555555555090 <puts@plt>
+   0x0000555555555311:	mov    eax,0x1
+   0x0000555555555316:	jmp    0x55555555532c
+   0x0000555555555318:	lea    rax,[rip+0xd1e]        # 0x55555555603d
+   0x000055555555531f:	mov    rdi,rax
+   0x0000555555555322:	call   0x555555555090 <puts@plt>
+   0x0000555555555327:	mov    eax,0x0
+   0x000055555555532c:	mov    rdx,QWORD PTR [rsp+0x38]
+   0x0000555555555331:	sub    rdx,QWORD PTR fs:0x28
+   0x000055555555533a:	je     0x555555555341
+   0x000055555555533c:	call   0x5555555550a0 <__stack_chk_fail@plt>
+   0x0000555555555341:	leave
+   0x0000555555555342:	ret
+End of assembler dump.
+Warning: 'set logging off', an alias for the command 'set logging enabled', is deprecated.
+Use 'set logging enabled off'.
+
