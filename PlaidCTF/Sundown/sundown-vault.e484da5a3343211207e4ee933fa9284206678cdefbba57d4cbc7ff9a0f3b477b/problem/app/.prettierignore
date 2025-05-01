@@ -1,5 +1,0 @@
-.pnp.*
-.yarn/*
-dist
-dist-ui
-node_modules
