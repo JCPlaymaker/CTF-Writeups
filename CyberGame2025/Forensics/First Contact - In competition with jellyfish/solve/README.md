@@ -16,9 +16,9 @@ So by following the hints given to us before we check the source and we get this
 
 So we see that the flag is within the spans so we can copypaste it into a file.html and run the following command:
 
-
 ``grep -o '<span>[^<]*</span>' file.html | sed 's/<[^>]*>//g' | tr -d '\n' | sed 's/.*\(SK-CERT{[^}]*}\).*/\1/'``
 
 and we get the flag:
+
 ``SK-CERT{hello}``
 
