@@ -2,7 +2,6 @@ So when we go to the link we get greeted with a ``So, the three platforms Kenya 
 
 So by following the hints given to us before we check the source and we get this:
 
-```
 ```html
 <html>
  <body>
@@ -21,6 +20,5 @@ So we see that the flag is within the spans so we can copypaste it into a file.h
 ``grep -o '<span>[^<]*</span>' file.html | sed 's/<[^>]*>//g' | tr -d '\n' | sed 's/.*\(SK-CERT{[^}]*}\).*/\1/'``
 
 and we get the flag:
-
-SK-CERT{hello}
+``SK-CERT{hello}``
 
