@@ -3,7 +3,7 @@
 If we look at:    
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/SQL%20Injection/PostgreSQL%20Injection.md#postgresql-file-manipulation
 
-We can see that we can use something like ``select pg_ls_dir('./');`` to check the contents of the remote server and we do get a result that means that we can go back + from the previous challenge we know we are in file:////var/www/html/database/index.php or something like that so we just need to send:
+We can see that we can use something like ``select pg_ls_dir('./');`` to check the contents of the remote server and we do get a result that means that we can go back + from the previous challenge we know we are in ``file:////var/www/html/database/index.php`` or something like that so we just need to send:
 
 ``user=postgres&password=Let%26me%3Din&query=select pg_ls_dir('../../../../../');``
 
