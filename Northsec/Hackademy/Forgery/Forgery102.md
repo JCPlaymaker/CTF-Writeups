@@ -12,7 +12,7 @@ So then we want to connect to database by using ``localhost:8080`` and passing a
 ``user=postgres&password=Let%26me%3Din&query=SELECT * FROM information_schema.tables`` 
 to get the list of tables and we see that flag db contains flag_82454eeebdae556f451d9a3924 
 
-so we do:
+so we do:   
 ``user=postgres&password=Let%26me%3Din&query=SELECT * from flag.flag_82454eeebdae556f451d9a3924``
 
 ``FLAG-Lv06965bgw7t1NVUSIHowXgxOCwzlRn2``
